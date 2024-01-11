@@ -3,13 +3,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'script/script.js' %}"></script>
+  <title>CafeZest</title>
 </head>
 <body>
-    test
-    
-</body>
-</html>
+    <main>
+    <header>
+        <img class="hero-image" src="../media/hero.jpg" alt="Hero Image">
+        <div class="burger-icon" onclick="toggleNav()">☰</div>
+        <nav onclick="hideNav()">
+            <div class="nav-links">
+                <a href="#">About</a>
+                <a href="#">Booking</a>
+                <a href="#">Logo</a>
+                <a href="#">Catering</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h2>Need some Zest?</h2>
+            <h1 class="hero-tagline">CafeZest's New Blend</h1>
+            <p>Try today and earn points!</p>
+            <button class="cta-btn">Learn More</button>
+            <button class="green-btn">Join our Membership Program</button>
+        </div>
+    </header>
+  
+      <div class="section">
+        <div class="text">
+            <h2>CafeZest</h2>
+            <p>Where tradition meets a fresh, vibrant spirit.</p>
+            <p>Rooted in the rich tapestry of French heritage.</p>
+            <p>Catering to both the young and the young at heart.</p>
+        </div>
+        <div class="image">
+            <img src="../media/cafe-bg-transparent.png" alt="Image">
+        </div>
+    </div>
+  
+      <section class="section">
+        <h2>About</h2>
+        <p>Nestled in the heart of Paris, our quaint French abode has been a cherished gathering spot for generations. As we tip our hats to our loyal patrons, we're also raising our cups to the next chapter.</p>
+      </section>
+  
+      <section class="section">
+        <h2>Newsletter</h2>
+        <p>Subscribe to our newsletter for a curated blend of delightful updates, exclusive offers, and a sprinkle of joie de vivre.</p>
+      </section>
+    </main>
+  
+    <footer>
+      <p>&copy; 2024 CafeZest. All rights reserved.</p>
+    </footer>
+  </body>
+  </html>
