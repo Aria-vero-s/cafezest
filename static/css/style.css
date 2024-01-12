@@ -219,6 +219,11 @@ body {
     text-decoration: none;
     color: #333;
     box-sizing: border-box;
+    transition: all;
+  }
+
+  nav a:hover {
+    color: #ff2200;
   }
   
   .burger-icon {
@@ -306,17 +311,52 @@ body {
 
   .section2 {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin:0;
+    justify-content: space-around;
+    padding: 0px;
+
     height:30%;
     width: 100%;
     padding:0;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  .section-slanted img,
-  .section2 img {
+  .menu-item {
+    text-align: center;
+    width: 30%;
+    padding: 20px;
+  }
+
+  .menu-item img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .menu-item h2 {
+    margin: 10px 0;
+  }
+
+  .menu-item p {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .menu-item button {
+    background-color: #4DA09D;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .menu-item button:hover {
+    background-color: #42c1bd;
+  }
+
+  .section-slanted img {
     width:100%;
   }
 
@@ -360,10 +400,76 @@ body {
       }
   }
 
-  footer {
-    background-color: #333;
-    color: #fff;
+  .newsletter-section {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .newsletter-image {
+    width: 40%;
+  }
+
+  .newsletter-content {
+    width: 50%;
     text-align: center;
-    padding: 0px;
+    position: relative;
+  }
+
+  .newsletter-content img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .newsletter-content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 80%;
+    border-bottom:#333 solid 2px;
+    transform: translate(-50%, -50%);
+    color:#333;
+  }
+
+  .newsletter-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#333;
+  }
+
+  .newsletter-content .newsletter-form {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Adjust text color based on background */
+  }
+
+  .newsletter-form input {
     width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  footer {
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+  }
+
+  footer p {
+    color: #333;
   }
