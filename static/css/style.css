@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #EA6B26;
+    background-color: #E4A436;
   }
 
   .cta-btn {
@@ -51,6 +51,28 @@ body {
     box-shadow: 6px 6px 0 0 #896200;
   }
 
+  .blue-btn {
+    margin:6px;
+    position: relative;
+    display: inline-block;
+    padding: 4% 12%;
+    background-color: #4DA09D;
+    color: #fffbe0;
+    font-size: 1.5vw;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 0 #3B5152;
+    transition: all 0.3s ease-in-out;
+    min-width: max-content;
+  }
+
+  .blue-btn:hover {
+    background-color: #42c1bd;
+    color: #fff;
+    box-shadow: 6px 6px 0 0 #3a8385;
+  }
+
   main {
     flex: 1;
   }
@@ -60,6 +82,32 @@ body {
     width: 100%;
     max-width: 100%;
     overflow: hidden;
+    margin:0;
+    padding:0;
+  }
+
+  h1 {
+    font-size: 3vw;
+    margin: 0;
+    padding: 0;
+    color:#fff;
+    width: max-content;
+    text-transform: uppercase;
+    border-bottom: #fff solid 2px;
+  }
+
+  h2 {
+    font-size: 2vw;
+    margin: 0;
+    padding: 0;
+    color:#333;
+    width: max-content;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size:2vw;
+    color:#fff;
   }
 
   .hero-image {
@@ -92,6 +140,44 @@ body {
       color: #fff;
   }
 
+  @media screen and (max-width: 500px) {
+    .hero-content {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin:0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-content h1,
+    .hero-content h2,
+    .hero-content p,
+    .hero-content .cta-btn,
+    .hero-content .green-btn {
+      color:#fff;
+      width:initial !important;
+      margin:0 auto;
+      min-width:initial !important;
+      margin:20px;
+      border-bottom: none !important;
+    }
+    .hero-content h1 {
+      font-size: 14vw !important;
+    }
+    .hero-content h2 {
+      font-size: 8vw !important;
+    }
+    .hero-content p {
+      font-size: 8vw !important;
+    }
+    .hero-content button {
+      font-size: 6vw !important;
+    }
+  }
+
   .hero-content h1 {
     width: max-content;
     font-size:4vw;
@@ -114,6 +200,7 @@ body {
   }
 
   nav {
+    font-size: 2vw;
     display: flex;
     position: absolute;
     text-align: center;
@@ -142,6 +229,7 @@ body {
     right: 20px;
     font-size: 2rem;
     z-index: 3;
+    color:#fff;
   }
 
   .nav-links {
@@ -192,22 +280,51 @@ body {
     }
   }
 
-  .section {
+  .section-slanted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin:0;
+    height:30%;
+    width: 100%;
+    padding:0;
+    background-color: #EA6B26;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%, 0% 0%);
+  }
+
+  .container {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
-    height:70vh;
+    margin:0;
+    height:50%;
+    width: 90%;
+    padding:0;
   }
 
-  .section img {
-    width:50vw;
+  .section2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin:0;
+    height:30%;
+    width: 100%;
+    padding:0;
+  }
+
+  .section-slanted img,
+  .section2 img {
+    width:100%;
   }
 
   .text {
       flex: 1;
       order: 1;
+      width: 100%;
+      text-align: left;
   }
 
   .image {
@@ -215,20 +332,31 @@ body {
       order: 2;
   }
 
-  .text img {
-      max-width: 100%;
-      height: auto;
-  }
-
-  @media (max-width: 800px) {
+  @media (max-width: 600px) {
       .section {
           flex-direction: column;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          margin:auto;
+          padding: 20px;
+          height:50%;
+          max-width: 100%;
+      }
+
+      .section img {
+        width:auto;
+        height: 30vh;
       }
 
       .text,
       .image {
           order: 0;
           flex: none;
+          text-align: center;
+          max-width:min-content;
       }
   }
 
@@ -236,6 +364,6 @@ body {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px;
+    padding: 0px;
     width: 100%;
   }

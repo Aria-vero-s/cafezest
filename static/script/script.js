@@ -7,11 +7,9 @@ function toggleNav() {
 
     if (navLinks.classList.contains('show')) {
         burgerIcon.innerHTML = '✕';
-        burgerIcon.style.color = '#fff';
     }
     else {
         burgerIcon.innerHTML = '☰';
-        burgerIcon.style.color = '#000';
     }
 }
 
