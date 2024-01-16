@@ -1,0 +1,573 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script src="{% static 'script/script.js' %}"></script>
+  <title>CafeZest</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100;400;800&display=swap');
+
+body {
+    font-family: 'Roboto condensed', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #E4A436;
+  }
+
+  .cta-btn {
+    margin:6px;
+    position: relative;
+    display: inline-block;
+    padding: 4% 12%;
+    background-color: #EA6C25;
+    color: #fff1ea;
+    font-size: 1.5vw;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 0 #BE1E04;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .cta-btn:hover {
+    background-color: #ff5e00;
+    color: #fff;
+    box-shadow: 6px 6px 0 0 #ff2200;
+  }
+
+  .green-btn {
+    margin:6px;
+    position: relative;
+    display: inline-block;
+    padding: 4% 12%;
+    background-color: #9A925A;
+    color: #fffbe0;
+    font-size: 1.5vw;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 0 #56451A;
+    transition: all 0.3s ease-in-out;
+    min-width: max-content;
+  }
+
+  .green-btn:hover {
+    background-color: #c5b74e;
+    color: #fff;
+    box-shadow: 6px 6px 0 0 #896200;
+  }
+
+  .blue-btn {
+    margin:6px;
+    position: relative;
+    display: inline-block;
+    padding: 4% 12%;
+    background-color: #4DA09D;
+    color: #fffbe0;
+    font-size: 1.5vw;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 0 #3B5152;
+    transition: all 0.3s ease-in-out;
+    min-width: max-content;
+  }
+
+  .blue-btn:hover {
+    background-color: #42c1bd;
+    color: #fff;
+    box-shadow: 6px 6px 0 0 #3a8385;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  header {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin:0;
+    padding:0;
+  }
+
+  h1 {
+    font-size: 3vw;
+    margin: 0;
+    padding: 0;
+    color:#fff;
+    width: max-content;
+    text-transform: uppercase;
+    border-bottom: #fff solid 2px;
+  }
+
+  h2 {
+    font-size: 2vw;
+    margin: 0;
+    padding: 0;
+    color:#333;
+    width: max-content;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size:2vw;
+    color:#fff;
+  }
+
+  .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+  }
+
+  @media screen and (max-width: 500px) {
+    .hero-image {
+      height:100vh;
+      object-fit: cover;
+      object-position:15%;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+    .hero-image {
+      height:100vh;
+      object-fit: cover;
+    }
+  }
+
+  .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 70%;
+      transform: translate(-50%, -70%);
+      text-align: center;
+      color: #fff;
+  }
+
+  @media screen and (max-width: 500px) {
+    .hero-content {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      margin:0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-content h1,
+    .hero-content h2,
+    .hero-content p,
+    .hero-content .cta-btn,
+    .hero-content .green-btn {
+      color:#fff;
+      width:initial !important;
+      margin:0 auto;
+      min-width:initial !important;
+      margin:20px;
+      border-bottom: none !important;
+    }
+    .hero-content h1 {
+      font-size: 14vw !important;
+    }
+    .hero-content h2 {
+      font-size: 8vw !important;
+    }
+    .hero-content p {
+      font-size: 8vw !important;
+    }
+    .hero-content button {
+      font-size: 6vw !important;
+    }
+  }
+
+  .hero-content h1 {
+    width: max-content;
+    font-size:4vw;
+    border-bottom: #fff solid 2px;
+    line-height: 120%;
+    margin-top: 0;
+    padding-top: 0;
+    text-transform: uppercase;
+  }
+
+  .hero-content h2 {
+    width: max-content;
+    font-size:2vw;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .hero-content p {
+    font-size:2vw;
+  }
+
+  nav {
+    font-size: 2vw;
+    display: flex;
+    position: absolute;
+    text-align: center;
+    width:90vw;
+    justify-content:center;
+    top:0;
+    left:20%;
+    padding:10px;
+    box-sizing: border-box;
+    z-index: 2;
+  }
+
+  nav a {
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    color: #333;
+    box-sizing: border-box;
+    transition: all;
+  }
+
+  nav a:hover {
+    color: #ff2200;
+  }
+  
+  .burger-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    z-index: 3;
+    color:#fff;
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+  }
+
+  @media (max-width: 800px) {
+    nav {
+      position: fixed;
+      flex-direction: column;
+      align-items: initial;
+      justify-content:initial;
+      width:100%;
+      top:0;
+      left:0;
+      padding:0;
+      box-sizing: border-box;
+    }
+    nav div {
+      margin: 0;
+      background-color: rgb(255, 153, 0);
+    }
+
+    nav a {
+      color:#fff;
+      font-size: 2rem;
+    }
+
+    .burger-icon {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      width: 100%;
+      background-color: rgb(81, 255, 0);
+    }
+
+    .nav-links.show {
+      display: flex;
+      flex-direction: column;
+      justify-content:space-around;
+      width:100vw;
+      height:100vh;
+      background-color: rgba(0, 0, 0, 0.70);
+    }
+  }
+
+  .section-slanted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin:0;
+    height:30%;
+    width: 100%;
+    padding:0;
+    background-color: #EA6B26;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 100%, 0% 0%);
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:0;
+    height:50%;
+    width: 90%;
+    padding:0;
+  }
+
+  .section2 {
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+
+    height:30%;
+    width: 100%;
+    padding:0;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .menu-item {
+    text-align: center;
+    width: 30%;
+    padding: 20px;
+  }
+
+  .menu-item img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .menu-item h2 {
+    margin: 10px 0;
+  }
+
+  .menu-item p {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .menu-item button {
+    background-color: #4DA09D;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .menu-item button:hover {
+    background-color: #42c1bd;
+  }
+
+  .section-slanted img {
+    width:100%;
+  }
+
+  .text {
+      flex: 1;
+      order: 1;
+      width: 100%;
+      text-align: left;
+  }
+
+  .image {
+      flex: 1;
+      order: 2;
+  }
+
+  @media (max-width: 600px) {
+      .section {
+          flex-direction: column;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          margin:auto;
+          padding: 20px;
+          height:50%;
+          max-width: 100%;
+      }
+
+      .section img {
+        width:auto;
+        height: 30vh;
+      }
+
+      .text,
+      .image {
+          order: 0;
+          flex: none;
+          text-align: center;
+          max-width:min-content;
+      }
+  }
+
+  .newsletter-section {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+  }
+
+  .newsletter-image {
+    width: 40%;
+  }
+
+  .newsletter-content {
+    width: 50%;
+    text-align: center;
+    position: relative;
+  }
+
+  .newsletter-content img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .newsletter-content h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 80%;
+    border-bottom:#333 solid 2px;
+    transform: translate(-50%, -50%);
+    color:#333;
+  }
+
+  .newsletter-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:#333;
+  }
+
+  .newsletter-content .newsletter-form {
+    font-size: 24px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff; /* Adjust text color based on background */
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  footer {
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+  }
+
+  footer p {
+    color: #333;
+  }
+</style>
+<body>
+    <main>
+    <header>
+        <img class="hero-image" src="../media/hero.png" alt="Hero Image">
+        <div class="burger-icon" onclick="toggleNav()">☰</div>
+        <nav onclick="hideNav()">
+            <div class="nav-links">
+                <a href="#">About</a>
+                <a href="#">Booking</a>
+                <a href="#">Logo</a>
+                <a href="#">Catering</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <h2>Need some Zest?</h2>
+            <h1 class="hero-tagline">CafeZest's New Blend</h1>
+            <p>Try today and earn points!</p>
+            <button class="cta-btn">Learn More</button>
+            <button class="green-btn">Join our Membership Program</button>
+        </div>
+    </header>
+
+    <div class="section-slanted">
+        <div class="container">
+        <div class="text">
+            <h2>Where tradition</h2>
+            <h1>meets a fresh, vibrant spirit</h1>
+            <p>Rooted in the rich tapestry of French heritage.</p>
+            <p>Catering to both the young and the young at heart.</p>
+            <button class="blue-btn">Read more</button>
+        </div>
+        <div class="image">
+            <img src="../media/cafe-bg-transparent.png" alt="Image">
+        </div>
+    </div>
+    </div>
+
+    <div class="section2">
+        <div class="container">
+        <div class="menu-item">
+          <img src="media/macchiato.png" alt="Macchiato">
+          <h2>Macchiato</h2>
+          <p>A delicious espresso coffee with a dollop of frothy milk.</p>
+          <button class="blue-btn">$4.99</button>
+        </div>
+    
+        <div class="menu-item">
+          <img src="media/dalgona.png" alt="Dalgona Coffee">
+          <h2>Dalgona Coffee</h2>
+          <p>A trendy and creamy coffee topped with whipped coffee foam.</p>
+          <button class="blue-btn">$5.99</button>
+        </div>
+    
+        <div class="menu-item">
+          <img src="media/ice-tea.png" alt="Ice Tea">
+          <h2>Ice Tea</h2>
+          <p>Refreshing iced tea served with a hint of citrus and sweetened to perfection.</p>
+          <button class="blue-btn">$3.99</button>
+        </div>
+    </div>
+    </div>
+
+    <div class="newsletter-section">
+        <div class="newsletter-image">
+          <img src="media/3coffees.png" alt="Left Image">
+        </div>
+    
+        <div class="newsletter-content">
+          <img src="media/coffee-cherries.jpg" alt="Right Image">
+          <h2>Join our community</h2>
+          <h1>Subscribe to Our Newsletter</h1>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button class=" blue-btn" type="submit">Subscribe</button>
+          </div>
+        </div>
+    </div>
+    </main>
+  
+    <footer>
+      <p>&copy; 2024 CafeZest. All rights reserved.</p>
+    </footer>
+  </body>
+  </html>

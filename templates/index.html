@@ -1,96 +1,168 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-  <script src="{% static 'script/script.js' %}"></script>
-  <title>CafeZest</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+
 <body>
-    <main>
-    <header>
-        <img class="hero-image" src="../media/hero.jpg" alt="Hero Image">
-        <div class="burger-icon" onclick="toggleNav()">☰</div>
-        <nav onclick="hideNav()">
-            <div class="nav-links">
-                <a href="#">About</a>
-                <a href="#">Booking</a>
-                <a href="#">Logo</a>
-                <a href="#">Catering</a>
-                <a href="#">Contact</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark transparent-navbar">
+        <div class="container">
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Order<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="templates/test.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><div class="image-container"></div></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reservation</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-        <div class="hero-content">
-            <h2>Need some Zest?</h2>
-            <h1 class="hero-tagline">CafeZest's New Blend</h1>
-            <p>Try today and earn points!</p>
-            <button class="cta-btn">Learn More</button>
-            <button class="green-btn">Join our Membership Program</button>
         </div>
-    </header>
+    </nav>
 
-    <div class="section-slanted">
+    <div class="hero-section">
         <div class="container">
-        <div class="text">
-            <h2>Where tradition</h2>
-            <h1>meets a fresh, vibrant spirit</h1>
-            <p>Rooted in the rich tapestry of French heritage.</p>
-            <p>Catering to both the young and the young at heart.</p>
-            <button class="blue-btn">Read more</button>
+            <div class="hero-text">
+                <h1>Cafe Bistro</h1>
+                <p>Reserve a table today!</p>
+                <a href="#" class="call-to-action">Book now</a>
+            </div>
         </div>
-        <div class="image">
-            <img src="../media/cafe-bg-transparent.png" alt="Image">
-        </div>
-    </div>
     </div>
 
-    <div class="section2">
-        <div class="container">
-        <div class="menu-item">
-          <img src="media/macchiato.png" alt="Macchiato">
-          <h2>Macchiato</h2>
-          <p>A delicious espresso coffee with a dollop of frothy milk.</p>
-          <button class="blue-btn">$4.99</button>
-        </div>
-    
-        <div class="menu-item">
-          <img src="media/dalgona.png" alt="Dalgona Coffee">
-          <h2>Dalgona Coffee</h2>
-          <p>A trendy and creamy coffee topped with whipped coffee foam.</p>
-          <button class="blue-btn">$5.99</button>
-        </div>
-    
-        <div class="menu-item">
-          <img src="media/ice-tea.png" alt="Ice Tea">
-          <h2>Ice Tea</h2>
-          <p>Refreshing iced tea served with a hint of citrus and sweetened to perfection.</p>
-          <button class="blue-btn">$3.99</button>
-        </div>
-    </div>
-    </div>
-
-    <div class="newsletter-section">
-        <div class="newsletter-image">
-          <img src="media/3coffees.png" alt="Left Image">
-        </div>
-    
-        <div class="newsletter-content">
-          <img src="media/coffee-cherries.jpg" alt="Right Image">
-          <h2>Join our community</h2>
-          <h1>Subscribe to Our Newsletter</h1>
-          <div class="newsletter-form">
-            <input type="email" placeholder="Your email address" required>
-            <button class=" blue-btn" type="submit">Subscribe</button>
+    <div class="container content about-content">
+      <div class="row" id="about">
+          <div class="col-md-6">
+              <img src="media/golden-coffee.png" alt="Coffee Shop Interior" class="img-fluid rounded">
           </div>
+          <div class="col-md-6">
+            <h3>Your coffee,</h3>
+            <h2>Our passion</h2>
+            <p>At our coffee shop, we are passionate about providing you with a unique and delightful coffee experience. Our journey began with a simple idea: to create a cozy space where people can gather, relax, and savor the finest coffee blends.</p>
+            <p>Our commitment to quality is reflected in every cup we serve. We carefully source premium coffee beans, ensuring a rich and flavorful taste that keeps our customers coming back for more.</p>
+            <a href="#" class="secondary-button">View our Menu</a>
+            <br>
+            <a href="#" class="call-to-action">Book now</a>
+          </div>
+      </div>
+    </div>
+    <div class="background-color menu-content" style="background-color: #e8cdb5; width:100vw; padding-top:30px; padding-bottom:30px; clip-path: polygon(100% 10%, 0% 0%, 0% 100%, 100% 90%, 100% 10%);">
+        <div class="container content">
+            <h2 style="transform: rotate(5deg);">A cafe for everyone</h2>
+            <div class="row">
+                <div class="col-md-4 menu-item">
+                    <img src="media/icetea-shadow.png" alt="Coffee 1" class="img-fluid">
+                    <h3>Zesty Citrus Splash</h3>
+                    <p>Indulge in the invigorating taste of iced tea infused with a burst of citrus flavors.</p>                
+                </div>
+                <div class="col-md-4 menu-item">
+                    <img src="media/dalgona-shadow.png" alt="Coffee 2" class="img-fluid">
+                    <h3>Vanilla Latte</h3>
+                    <p>A delightful combination of espresso and vanilla with a dollop of Dalgona Coffee cream</p>
+                </div>
+                <div class="col-md-4 menu-item">
+                    <img src="media/macchiato-shadow.png" alt="Coffee 3" class="img-fluid">
+                    <h3>Macchiato Delight</h3>
+                    <p>For those who enjoy a strong and rich flavor.</p>
+                </div>
+            </div>
+            <div class="row center">
+                <a href="#" class="secondary-button">View our Menu</a>
+            </div>
         </div>
     </div>
-    </main>
-  
-    <footer>
-      <p>&copy; 2024 CafeZest. All rights reserved.</p>
+
+    <div class="container content online-content">
+        <div class="row">
+        <div class="col-md-6 order-md-2 image-container">
+            <img src="media/exterior.jpg" alt="Online Ordering Image" class="img-fluid rounded">
+            <div class="image-background">
+                <div class="image-overlay">
+                    <h2>Order Ahead</h2>
+                    <p>A convenient online ordering system for customers to order ahead or for delivery.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <div class="feature">
+            <h3 class="text-center">User-Friendly Interface</h3>
+            <p>Our online ordering system is designed with a user-friendly interface, making it easy for customers to navigate and place orders seamlessly.</p>
+            </div>
+            <div class="feature">
+            <h3 class="text-center">Quick and Secure Transactions</h3>
+            <p>Experience quick and secure transactions with our online payment system, ensuring a hassle-free ordering process for our valued customers.</p>
+            </div>
+            <div class="feature">
+            <h3 class="text-center">Customizable Options</h3>
+            <p>Personalize your order with customizable options, allowing you to tailor your coffee just the way you like it. Your satisfaction is our priority.</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- <div class="container content">
+        <h2>Why Choose Us?</h2>
+        <div class="row">
+            <div class="col-md-4 feature">
+                <h3>Quality Ingredients</h3>
+                <p>We use only the finest coffee beans and ingredients to ensure a rich and flavorful experience.</p>
+            </div>
+            <div class="col-md-4 feature">
+                <h3>Cozy Ambiance</h3>
+                <p>Relax in our cozy atmosphere, perfect for catching up with friends or enjoying a quiet moment.</p>
+            </div>
+            <div class="col-md-4 feature">
+                <h3>Friendly Staff</h3>
+                <p>Our dedicated and friendly staff is here to make your coffee experience memorable.</p>
+            </div>
+        </div>
+    </div> -->
+
+    <footer class="bg-dark text-white py-4">
+      <div class="container footer">
+          <div class="row">
+              <div class="col-md-4">
+                  <h5>Visit Us</h5>
+                  <p>123 Coffee Street,<br>Cityville, State, Zip</p>
+              </div>
+              <div class="col-md-4">
+                  <h5>Contact</h5>
+                  <p>Email: info@coffeeshop.com<br>Phone: (123) 456-7890</p>
+              </div>
+              <div class="col-md-4">
+                  <h5>Follow Us</h5>
+                  <ul class="list-inline">
+                      <li class="list-inline-item"><a href="#" class="text-white">Facebook</a></li>
+                      <li class="list-inline-item"><a href="#" class="text-white">Twitter</a></li>
+                      <li class="list-inline-item"><a href="#" class="text-white">Instagram</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
     </footer>
-  </body>
-  </html>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
