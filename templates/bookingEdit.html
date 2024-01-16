@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="navbar-background"></div>
+
+<div class="container">
+    <h2>Update a booking:</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update booking</button>
+        {% for booking in bookings %}
+        <a href="/delete/{{ booking.id }}">Click here</a> to cancel your booking
+        {% endfor %}
+    </form>
+</div>
+{% endblock %}

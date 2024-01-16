@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* catering */
+    .booking {
+        text-align: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .booking-heading {
+        text-align: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    select.form-select, input {
+        padding: 10px;
+        border: 1px solid #F7C4CA;
+        border-radius: 4px;
+        width: 100%;
+        font-size: 16px;
+        background-color: #f0f1f3;
+    }
+
+    select.form-select:focus {
+        outline: none;
+        border-color: #FD594D;
+    }
+
+    /* Additional styles for the form */
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:100%;
+}
+
+.custom-form select {
+    background-color: transparent;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #FD594D;
+    border-radius: 100px;
+}
+
+/* Thank you message */
+.thank-you-message {
+    display: none;
+    text-align: center;
+    z-index: 10000;
+}
+</style>
+
+<div class="page container">
+    <h1 style="margin-top:100px;">Order online</h1>
+    <form method="post" action="{% url 'catering' %}" id="catering-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.food_item.id_for_label }}"><h3>Food:</h3></label>
+            <div class="custom-form">{{ form.food_item }}</div>
+            <input type="number" name="food_quantity" min="10" value="1">
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.drink_item.id_for_label }}"><h3>Drink:</h3></label>
+            <div class="custom-form">{{ form.drink_item }}</div>
+            <input type="number" name="drink_quantity" min="10" value="1">
+        </div>
+        <br>
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for error in form.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <button type="submit">Place Order Now</button>
+
+        <div id="total-price"></div>
+    </form>
+
+</div>
+
+<script>
+    // Define a function to update the total price
+    function calculateTotal() {
+        const foodItem = document.getElementById('{{ form.food_item.id_for_label }}').value;
+        const foodItemName = foodItem.split(' (')[0]; // Extract the item name
+        const foodQuantity = parseFloat(document.getElementsByName('food-quantity')[0].value);
+
+        const drinkItem = document.getElementById('{{ form.drink_item.id_for_label }}').value;
+        const drinkItemName = drinkItem.split(' (')[0]; // Extract the item name
+        const drinkQuantity = parseFloat(document.getElementsByName('drink-quantity')[0].value);
+
+        // Define the prices for food and drinks
+        const foodPrices = {
+            'croissant': 1.00,
+            'sandwich': 6.00,
+            'salad': 5.00,
+            'pastry': 2.00,
+        };
+
+        const drinkPrices = {
+            'latte': 3.00,
+            'coffee': 2.00,
+            'tea': 1.00,
+            'juice': 1.00,
+        };
+
+        // Calculate the total price
+        const totalFoodPrice = foodPrices[foodItemName] * foodQuantity;
+        const totalDrinkPrice = drinkPrices[drinkItemName] * drinkQuantity;
+        const totalPrice = totalFoodPrice + totalDrinkPrice;
+
+        // Display the total price to the user
+        const totalPriceElement = document.getElementById('total-price');
+        totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+    }
+
+    // Add event listeners to the quantity input fields
+    document.getElementsByName('food-quantity')[0].addEventListener('input', calculateTotal);
+    document.getElementsByName('drink-quantity')[0].addEventListener('input', calculateTotal);
+
+    // Add event listeners to the select elements for real-time updates
+    document.getElementById('{{ form.food_item.id_for_label }}').addEventListener('change', calculateTotal);
+    document.getElementById('{{ form.drink_item.id_for_label }}').addEventListener('change', calculateTotal);
+
+    // Call calculateTotal initially to show the initial total
+    calculateTotal();
+</script>
+
+
+{% endblock %}

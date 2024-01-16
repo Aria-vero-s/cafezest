@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+        /* menu page */
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px;
+    }
+
+    .menu-item {
+        border: 1px solid #9E3E38;
+        padding: 10px;
+        margin:10px;
+        text-align: center;
+        height: 300px;
+        width: 400px;
+        transition: all 0.3s;
+    }
+
+    .menu-item:hover {
+        color: #FD594D;
+    }
+
+    .menu-details a {
+        color: #FD594D;
+        font-size: 1.5rem;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .menu-details a:hover {
+        color: #fd925c;
+        text-decoration: none;
+        border-bottom: 4px solid #FD594D;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #FD594D;
+    }
+
+    .details {
+        display: none;
+        margin: 20px;
+    }
+
+    .details p {
+        margin: 5px 0;
+    }
+
+    .menu-categories i {
+        font-size: 2rem;
+    }
+
+    .menu-categories button {
+        font-size: 1rem;
+        font-weight:400;
+        background-color: #ff4a0b;
+        color: #F9F5F1;
+        padding: 10px 60px;
+        border-radius: 100px;
+        border:none;
+        text-decoration: none;
+        display: inline-block;
+        margin:10px;
+        margin-top: 20px;
+        transition: all 0.3s ease-in-out;
+        z-index:1000;
+    }
+
+    .menu-categories button:hover {
+        background-color: #fd925c;
+        color: #F9F5F1;
+        text-decoration: none;
+    }
+</style>
+
+<div class="page container">
+    <h1>Cafe Menu</h1>
+    <div class="menu-categories">
+        <button onclick="displayCategory('drinks')">Drinks</button>
+        <button onclick="displayCategory('sandwiches')">Sandwiches</button>
+        <button onclick="displayCategory('bakeryGoods')">Bakery Goods</button>
+        <button onclick="displayCategory('snacks')">Snacks</button>
+    </div>
+    
+    <div class="menu">
+        <!-- Menu items will display here -->
+    </div>    
+
+    <div class="menu-details" id="menu-details">
+        <!-- Details for the selected menu item will display here -->
+    </div>
+</div>
+{% endblock %}

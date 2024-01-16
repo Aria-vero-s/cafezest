@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="navbar-background"></div>
+
+<div class="container">
+  {% for booking in bookings %}
+    <h2>Welcome, {{ booking.First_name }}</h2>
+  {% endfor %}
+
+  {% for booking in bookings %}
+    <a href="/edit/{{ booking.id }}" class="btn">Edit your booking</a>
+    <br>
+    <a href="/delete/{{ booking.id }}"class="btn">Cancel your booking</a>
+    <p>First name: {{ booking.First_name }}</p>
+    <p>Last name: {{ booking.Last_name }}</p>
+    <p>Email: {{ booking.Email }}</p>
+    <p>Phone: {{ booking.Phone }}</p>
+    <p>Guests: {{ booking.guests }}</p>
+    <p>Day: {{ booking.day }}</p>
+    <p>Time: {{ booking.time }}</p>
+  {% endfor %}
+
+  {% for booking in bookings %}
+    {% empty %}
+    <p>You have no booking yet.</p>
+    <a href="{% url 'booking' %}" class="btn">Click here to create a booking</a>
+  {% endfor %}
+
+</div>
+
+	
+{% endblock %}

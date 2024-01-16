@@ -1,0 +1,183 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caze Zest</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- Custom JS -->
+    <script src="{% static 'script/script.js' %}"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/8f26e5abfe.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+    /* base navbar */
+
+    header {
+        padding: 0;
+        margin:0;
+        z-index: 1000;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        padding: 0;
+        margin:0;
+        min-width:max-content;
+    }
+
+    .navbar-links {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        z-index: 1000;
+    }
+
+    .navbar-links li {
+        margin-right: 20px;
+        margin-left: 20px;
+        min-width: 80px;
+        z-index: 1000;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .navbar-links {
+            flex-direction: column;
+        }
+        .navbar-links li {
+            margin:10px;
+        }
+    }
+
+    .navbar-links a {
+        text-decoration: none;
+        font-weight: 400;
+        color: #333;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+        z-index: 1000;
+    }
+
+    .navbar-links a:hover {
+        color: #FD594D;
+        z-index: 1000;
+    }
+
+    .navbar-logo {
+        width: 150px;
+        height: 150px;
+        background-image: url('../media/black-logo.png');
+        background-size: cover;
+        transition: background-image 0.3s, transform 0.3s;
+        z-index: 1000;
+    }
+
+    .navbar-logo:hover {
+        background-image: url('../media/orange-logo.png');
+        transform: scale(1.1);
+    }
+
+    .navbar-background {
+        background-color:#fd925c;
+        height: 20vh;
+        margin:0;
+    }
+
+    button {
+        font-size: 1rem;
+        font-weight:400;
+        background-color: #ff4a0b;
+        color: #F9F5F1;
+        padding: 10px 60px;
+        border-radius: 100px;
+        border:none;
+        text-decoration: none;
+        display: inline-block;
+        margin:10px;
+        margin-top: 20px;
+        transition: all 0.3s ease-in-out;
+        z-index:1000;
+    }
+
+    button:hover {
+        background-color: #333;
+        color: #F9F5F1;
+        text-decoration: none;
+    }
+</style>
+<body>
+
+    <header>
+        <!-- Base NavBar -->
+        <nav class="navbar">
+            <ul class="navbar-links">
+                <li><a href="{% url 'booking' %}">Reservation</a></li>
+                <li><a href="{% url 'menu' %}">Menu</a></li>
+            </ul>
+            <a href="{% url 'index' %}">
+                <div class="navbar-logo" id="logo"></div>
+            </a>
+            <ul class="navbar-links">
+                <li><a href="{% url 'catering' %}">Order</a></li>
+                <li><a href="{% url 'index' %}#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Content specific to child templates -->
+    {% block content %}{% endblock %}
+    
+    <!-- Footer -->
+    <footer class="text-white py-4">
+      <div class="container footer">
+          <div class="row">
+              <div class="col-md-4">
+                <h3>Location</h3>
+                <p>123 Rue de Paris<br>75001 Paris<br>France</p>
+              </div>
+              <div class="col-md-4">
+                <h3>Opening Hours</h3>
+                <p>Monday - Friday: 7:00 AM - 9:00 PM<br>Saturday - Sunday: 8:00 AM - 7:00 PM<br>Sunday - Closed</p>
+              </div>
+              <div class="col-md-4">
+                <h3>Contact Info</h3>
+                <p>Email: info@cafezest.com<br>Phone: +33 1 234 5678</p>
+                <div class="social-icons">
+                    <div class="navbar-logo-black" id="logo"></div>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+              </div>
+          </div>
+          <div class="row copyrights">
+                <div class="col-md-12">
+                    <p class="text-center">© 2024 Cafe Zest. All rights reserved.</p>
+                </div>
+          </div>
+      </div>
+    </footer>
+
+    </div>
+</body>
+</html>

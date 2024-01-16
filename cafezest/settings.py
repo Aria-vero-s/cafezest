@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'storages',
     'cafezest',
     'home',
+    'bookings',
+    'catering',
 ]
 
 MIDDLEWARE = [
