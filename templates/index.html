@@ -7,18 +7,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caze Zest</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <!-- Custom JS -->
     <script src="{% static 'script/script.js' %}"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark transparent-navbar">
         <div class="container">
             <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -73,9 +72,9 @@
           </div>
       </div>
     </div>
-    <div class="background-color menu-content" style="background-color: #e8cdb5; width:100vw; padding-top:30px; padding-bottom:30px; clip-path: polygon(100% 10%, 0% 0%, 0% 100%, 100% 90%, 100% 10%);">
+    <div class="background-color menu-content">
         <div class="container content">
-            <h2 style="transform: rotate(5deg);">A cafe for everyone</h2>
+            <h2 class="skewed">A cafe for everyone</h2>
             <div class="row">
                 <div class="col-md-4 menu-item">
                     <img src="media/icetea-shadow.png" alt="Coffee 1" class="img-fluid">
@@ -101,29 +100,30 @@
 
     <div class="container content online-content">
         <div class="row">
-        <div class="col-md-6 order-md-2 image-container">
-            <img src="media/exterior.jpg" alt="Online Ordering Image" class="img-fluid rounded">
-            <div class="image-background">
-                <div class="image-overlay">
-                    <h2>Order Ahead</h2>
-                    <p>A convenient online ordering system for customers to order ahead or for delivery.</p>
+            <div class="col-md-6 order-md-2 order-container">
+                <img src="media/exterior.jpg" alt="Online Ordering Image" class="img-fluid rounded">
+                <div class="image-background">
+                    <div class="image-overlay">
+                        <h2>Order Ahead</h2>
+                        <p>A convenient online ordering system for customers to order ahead or for delivery.</p>
+                        <a href="#" class="call-to-action">Order now</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6 order-md-1">
-            <div class="feature">
-            <h3 class="text-center">User-Friendly Interface</h3>
-            <p>Our online ordering system is designed with a user-friendly interface, making it easy for customers to navigate and place orders seamlessly.</p>
+            <div class="col-md-6 order-md-1">
+                <div class="feature">
+                <h3 class="text-center">User-Friendly Interface</h3>
+                <p>Our online ordering system is designed with a user-friendly interface, making it easy for customers to navigate and place orders seamlessly.</p>
+                </div>
+                <div class="feature">
+                <h3 class="text-center">Quick and Secure</h3>
+                <p>Experience quick and secure transactions with our online payment system, ensuring a hassle-free ordering process for our valued customers.</p>
+                </div>
+                <div class="feature">
+                <h3 class="text-center">Customizable Options</h3>
+                <p>Personalize your order with customizable options, allowing you to tailor your coffee just the way you like it. Your satisfaction is our priority.</p>
+                </div>
             </div>
-            <div class="feature">
-            <h3 class="text-center">Quick and Secure Transactions</h3>
-            <p>Experience quick and secure transactions with our online payment system, ensuring a hassle-free ordering process for our valued customers.</p>
-            </div>
-            <div class="feature">
-            <h3 class="text-center">Customizable Options</h3>
-            <p>Personalize your order with customizable options, allowing you to tailor your coffee just the way you like it. Your satisfaction is our priority.</p>
-            </div>
-        </div>
         </div>
     </div>
 
