@@ -74,6 +74,7 @@ h3 {
     color: #F9F5F1;
     padding: 10px 60px;
     border-radius: 100px;
+    border:none;
     text-decoration: none;
     display: inline-block;
     margin:10px;
@@ -94,6 +95,7 @@ h3 {
     background-color: #fea202;
     color: #F9F5F1;
     padding: 10px 60px;
+    border:none;
     border-radius: 100px;
     text-decoration: none;
     display: inline-block;
@@ -315,6 +317,15 @@ form {
     margin-bottom: 200px;
     border-radius: 100px;
     padding:50px;
+}
+
+.custom-message-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1050;
 }
 
 footer {

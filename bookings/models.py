@@ -42,6 +42,7 @@ class Booking(models.Model):
     day = models.DateField(default=datetime.now)
     time = models.CharField(max_length=10, choices=TIME_CHOICES, blank=False, null=False)
     time_ordered = models.DateTimeField(default=datetime.now, blank=True)
+    date_ordered = models.DateField(default=datetime.now)
 
     def __str__(self):
         return f"day: {self.day} | time: {self.time}"

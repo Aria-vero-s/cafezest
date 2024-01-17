@@ -2,34 +2,53 @@
 
 {% block content %}
 
-<div class="navbar-background"></div>
+<style>
+  .booking-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 50px;
+    margin-bottom: 100px;
+  }
+  .divider {
+    margin: 40px 0;
+    border-bottom: 1px solid #ebe0e0;
+  }
+</style>
 
 <div class="container">
   <div class="center">
-    {% for booking in bookings %}
-      <h2>Welcome, {{ booking.First_name }}</h2>
-    {% endfor %}
+    <h2>Welcome, {{ user }}</h2>
   </div>
   <div class="container">
 
-  {% for booking in bookings %}
-    <a href="/edit/{{ booking.id }}" class="btn">Edit your booking</a>
-    <br>
-    <a href="/delete/{{ booking.id }}"class="btn">Cancel your booking</a>
-    <p>First name: {{ booking.First_name }}</p>
-    <p>Last name: {{ booking.Last_name }}</p>
-    <p>Email: {{ booking.Email }}</p>
-    <p>Phone: {{ booking.Phone }}</p>
-    <p>Guests: {{ booking.guests }}</p>
-    <p>Day: {{ booking.day }}</p>
-    <p>Time: {{ booking.time }}</p>
-  {% endfor %}
+    {% for booking in bookings %}
+    <div class="booking-content">
+      <h3>Your booking:</h3>
+      <p><strong>User: {{ booking.user }}</strong></p>
+      <p><strong>First name:</strong> {{ booking.First_name }}</p>
+      <p><strong>Last name:</strong> {{ booking.Last_name }}</p>
+      <p><strong>Email:</strong> {{ booking.Email }}</p>
+      <p><strong>Phone:</strong> {{ booking.Phone }}</p>
+      <p><strong>Guests:</strong> {{ booking.guests }}</p>
+      <p><strong>Day:</strong> {{ booking.day }}</p>
+      <p><strong>Time:</strong> {{ booking.time }}</p>
+      <a href="/edit/{{ booking.id }}" class="secondary-button">Edit your booking</a>
+      <br>
+      <a href="/delete/{{ booking.id }}"class="call-to-action">Cancel your booking</a>
+      <div class="divider"></div>
+      <a href="{% url 'logout_user' %}" class="secondary-button">Logout</a>
+    </div>
+    {% endfor %}
 
-  {% for booking in bookings %}
-    {% empty %}
-    <p>You have no booking yet.</p>
-    <a href="{% url 'booking' %}" class="btn">Click here to create a booking</a>
-  {% endfor %}
+    {% for booking in bookings %}
+      {% empty %}
+      <div class="booking-content">
+        <p>You currently have no reservation.</p>
+        <a href="{% url 'booking' %}" class="call-to-action">Create a reservation</a>
+        <a href="{% url 'index' %}" class="secondary-button">Go back to Homepage</a>
+        <a href="{% url 'logout_user' %}" class="secondary-button">Logout</a>
+      </div>
+    {% endfor %}
   </div>
 </div>
 

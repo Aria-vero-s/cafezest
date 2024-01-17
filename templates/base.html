@@ -126,6 +126,31 @@
     }
 </style>
 <body>
+    {% if messages %}
+        <div class="modal fade custom-message-modal" id="customMessageModal" tabindex="-1" role="dialog" aria-labelledby="customMessageModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content bg-dark text-light">
+                    <div class="modal-header">
+                        <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Add this script to show the modal when there are messages
+            $(document).ready(function () {
+                $('#customMessageModal').modal('show');
+            });
+        </script>
+    {% endif %}
 
     <header>
         <!-- Base NavBar -->
@@ -146,13 +171,25 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}"><div class="image-container"></div></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'menu' %}">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'booking' %}">Reserve</a>
-                        </li>
-                    </ul>
+                    
+                        {% if user.is_authenticated %}
+                            <!-- Display these links if the user is logged in -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'booking' %}">Reserve</a>
+                            </li>
+                        {% else %}
+                            <!-- Redirect to notRegistered if the user is not logged in -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'notRegistered' %}">Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'notRegistered' %}">Reserve</a>
+                            </li>
+                        {% endif %}
+                    </ul>                    
                 </div>
             </div>
         </nav>
@@ -171,7 +208,7 @@
               </div>
               <div class="col-md-4">
                 <h3>Opening Hours</h3>
-                <p>Monday - Friday: 7:00 AM - 9:00 PM<br>Saturday - Sunday: 8:00 AM - 7:00 PM<br>Sunday - Closed</p>
+                <p>Tuesday - Friday: 7:00 AM - 9:00 PM<br>Saturday - Sunday: 8:00 AM - 7:00 PM<br>Monday - Closed</p>
               </div>
               <div class="col-md-4">
                 <h3>Contact Info</h3>

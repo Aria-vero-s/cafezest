@@ -22,10 +22,16 @@
     select.form-select, input {
         padding: 10px;
         border: 1px solid #F7C4CA;
-        border-radius: 4px;
+        border-radius: 50px;
         width: 100%;
         font-size: 16px;
-        background-color: #f0f1f3;
+        background-color: #fff;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-position: right center;
+        background-repeat: no-repeat;
+        padding-right: 30px;
     }
 
     select.form-select:focus {
@@ -42,12 +48,11 @@
         {% csrf_token %}
 
         <div class="booking-heading">
-            <h3>Welcome, {{ user }}</h3>
-            <h4>To book a table, please select the following:</h4>
+            <h3>To book a table, please select the following:</h3>
         </div>
 
         <div class="booking">
-            <h3>Select guests:</h3>
+            <p>Guests quantity:</p>
             <select class="form-select" name="guests" required>
                 <option value="1 guest">1 guest</option>
                 <option value="2 guests">2 guests</option>
@@ -59,30 +64,30 @@
                 <option value="8 guests">8 guests</option>
             </select>
 
-            <h3>Select Day:</h3>
+            <p>Day:</p>
             <select class="form-select" name="day" required>
                 {% for validateWeekday in validateWeekdays %}
                 <option value="{{validateWeekday}}">{{validateWeekday}}</option>
                 {% endfor %}
             </select>
 
-            <h3>Time:</h3>
+            <p>Time:</p>
             <select class="form-select" name="time">
                 {% for time in times %}
                 <option value="{{time}}">{{time}}</option>
                 {% endfor %}
             </select>
 
-            <h3>First name:</h3>
+            <p>First name:</p>
             <input type="text" name="First_name" value="{{ First_name }}" required pattern="[A-Za-z0]+">
 
-            <h3>Last name:</h3>
+            <p>Last name:</p>
             <input type="text" name="Last_name" value="{{ Last_name }}" required pattern="[A-Za-z0]+">
 
-            <h3>Email:</h3>
+            <p>Email:</p>
             <input type="email" name="Email" value="{{ Email }}" required pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$">
 
-            <h3>Phone number:</h3>
+            <p>Phone number:</p>
             <input type="tel" name="Phone" value="{{ Phone }}" required pattern="[0-9]{10}|[0-9]{9}">
         </div>
         <br>

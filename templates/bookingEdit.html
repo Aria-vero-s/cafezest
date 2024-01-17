@@ -1,19 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    form label {
+        display: none;
+    }
 
-<div class="navbar-background"></div>
+    select, input {
+        padding: 10px;
+        border: 1px solid #F7C4CA;
+        border-radius: 50px;
+        width: 100%;
+        font-size: 16px;
+        background-color: #fff;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-position: right center;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+        margin-top:20px;
+    }
 
+    select :focus {
+        outline: none;
+        border-color: #ff4a0b;
+    }
+</style>
 <div class="container">
-    <h2>Update a booking:</h2>
-
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update booking</button>
-        {% for booking in bookings %}
-        <a href="/delete/{{ booking.id }}">Click here</a> to cancel your booking
-        {% endfor %}
-    </form>
+    <div class="center">
+        <h2>Update booking:</h2>
+    </div>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update booking</button>
+            <a href="{% url 'index' %}" class="secondary-button">Go back to Homepage</a>
+            <a href="{% url 'account' %}" class="secondary-button">Return to account</a>
+        </form>
+    </div>
 </div>
 {% endblock %}

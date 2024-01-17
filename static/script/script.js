@@ -6,6 +6,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    $(document).ready(function() {
+        $('.custom-toggler').click(function() {
+            // Toggle the X icon when the toggler is clicked
+            $(this).find('i').toggleClass('fa-bars fa-times');
+        });
+
+        // Revert to the bars icon when the navbar is collapsed
+        $('#navbarNav').on('hide.bs.collapse', function() {
+            $('.custom-toggler').find('i').removeClass('fa-times').addClass('fa-bars');
+        });
+    });
+});
+
+
 document.addEventListener("DOMContentLoaded", function() {
     var openModalBtn = document.getElementById("openModalBtn");
     var closeModalBtn = document.getElementById("closeModalBtn");

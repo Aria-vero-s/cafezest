@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block body %}
 
+{% block content %}
+
+<div class="container">
+  <div class="center">
+    <h2>Reservation</h2>
+  </div>
 {% if form.error %}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   There was an error with your form...
@@ -12,11 +16,10 @@
 {% endif %}
 
 <div class="container container-fluid" style="padding: 40px;">
-    <h2>Online booking</h2>
     <div class="container shadow bg-body rounded text-black text-center">
         <p>You need to create an account in order to make a reservation with us.</p>
-        <p><a href="{% url 'register_user' %}" class="btn btn-primary">Click here to create an account</a></p>
-
+        <p><a href="{% url 'register_user' %}" class="secondary-button">Create an account</a></p>
+      </div>
   </div>
 </div>
 

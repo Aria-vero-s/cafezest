@@ -50,6 +50,8 @@
       display: flex;
       justify-content: center !important;
       align-items: center !important;
+      margin:0;
+      margin-bottom: 5px;
     }
 
     .quantity-input {
@@ -62,6 +64,7 @@
       text-align: center;
       justify-content: center !important;
       align-items: center !important;
+      margin:0;
     }
 
     .quantity-btn {
@@ -82,8 +85,37 @@
     }
     .button-container {
       display: flex;
+      flex-direction: column;
+      padding:0;
+    }
+    .button-container button {
+      width:max-content;
+      margin:0;
+      margin-top:5px;
+      margin-bottom:5px;
+    }
+
+    .divider {
+      margin: 40px 0;
+      border-bottom: 1px solid #ebe0e0;
+    }
+
+    .total-container {
+      display: flex;
       justify-content: space-between;
       align-items: center;
+      text-align: center;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 50px;
+    }
+
+    @media screen and (max-width: 767px) {
+      .total-container {
+      display: flex;
+      flex-direction: column;
+      }
     }
   </style>
 
@@ -111,21 +143,23 @@
               <button type="submit" name="action" value="update_{{ item.id }}">Update Quantity</button>
               <button type="submit" name="action" value="remove_{{ item.id }}">Remove</button>
             </div>
+            <div class="divider"></div>
           </div>
         </li>
         {% endfor %}
       </ul>
     </form>
-    
-
-    <h3>Total: ${{ order.total_price }}</h3>
-    <a href="{% url 'menu' %}">Go Back to Menu</a>
-
-    <form method="post" action="{% url 'checkout' %}">
-      {% csrf_token %}
-      <button class="paypal-button" type="submit"><i class="fab fa-paypal"></i> Place Order</button>
-    </form>
-
+    <h3 style="margin-top:100px;">Pay by credit card:</h3>
+    <p>To pay by credit card, please select the 'pay by credit card' option after clicking 'Place Order'</p>
+    <div class="total-container">
+      <h3>Total: ${{ order.total_price }}</h3>
+      <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <button class="paypal-button" type="submit"><i class="fab fa-paypal"></i> Place Order</button>
+      </form>
+    </div>
+    <a href="{% url 'menu' %}" class="secondary-button">Go Back to Menu</a>
+    <div class="divider"></div>
     <script>
       function incrementQuantity(itemId) {
         const input = document.querySelector(`input[name="quantity_${itemId}"]`);

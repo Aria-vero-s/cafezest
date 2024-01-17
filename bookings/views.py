@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from datetime import datetime, timedelta
+from django.utils import timezone
 from .models import *
 from django.contrib import messages
 from django.urls import path
@@ -10,8 +11,11 @@ from .forms import RegisterUserForm, BookingForm
 from .models import Booking
 from django.views.generic import ListView
 from django.views import generic
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView
 
-# login / logout / user registration system
+
 def login_user(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -19,6 +23,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request, "Successfully logged in")
             return redirect('index')
         else:
             messages.success(request, "There was an error logging in, please try again")
@@ -91,12 +96,11 @@ def Phone(request):
         Phone = request.POST["Phone"]
 
 
+@login_required
 def account(request):
-    bookings = Booking.objects.filter(user=request.user)
-    context = {
-        'bookings': bookings
-    }
-    return render(request, 'account.html', context)
+    user_bookings = Booking.objects.filter(user=request.user)
+
+    return render(request, 'account.html', {'bookings': user_bookings})
 
 
 def bookingEdit(request, booking_id):
@@ -105,8 +109,12 @@ def bookingEdit(request, booking_id):
         form = BookingForm(request.POST, instance=booking)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Booking details updated successfully!')
             return redirect('account')
-    form = BookingForm(instance=booking)
+        else:
+            messages.error(request, 'There was an error. Please check the form.')
+    else:
+        form = BookingForm(instance=booking)
     context = {
         'form': form
     }
@@ -115,7 +123,13 @@ def bookingEdit(request, booking_id):
 
 def bookingDelete(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
+
+    # Format the date as "2024-00-00"
+    formatted_date = booking.date_ordered.strftime("%Y-%m-%d")
+
+    success_message = f"Booking created on {formatted_date} has been successfully deleted."
     booking.delete()
+    messages.success(request, success_message)
     return redirect('account')
 
 
