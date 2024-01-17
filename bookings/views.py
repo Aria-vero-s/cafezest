@@ -31,7 +31,7 @@ def login_user(request):
     else:
         return render(request, 'login.html')
 
-
+@login_required
 def logout_user(request):
     logout(request)
     messages.success(request, "You were logged out")
@@ -102,7 +102,7 @@ def account(request):
 
     return render(request, 'account.html', {'bookings': user_bookings})
 
-
+@login_required
 def bookingEdit(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
     if request.method == 'POST':
@@ -120,7 +120,7 @@ def bookingEdit(request, booking_id):
     }
     return render(request, 'bookingEdit.html', context)
 
-
+@login_required
 def bookingDelete(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
 
@@ -132,7 +132,7 @@ def bookingDelete(request, booking_id):
     messages.success(request, success_message)
     return redirect('account')
 
-
+@login_required
 def booking(request):
     if request.method == 'POST':
 

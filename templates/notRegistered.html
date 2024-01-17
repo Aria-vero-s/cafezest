@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="center">
-    <h2>Reservation</h2>
+    <h2>Create an account first!</h2>
   </div>
 {% if form.error %}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -17,8 +17,11 @@
 
 <div class="container container-fluid" style="padding: 40px;">
     <div class="container shadow bg-body rounded text-black text-center">
-        <p>You need to create an account in order to make a reservation with us.</p>
-        <p><a href="{% url 'register_user' %}" class="secondary-button">Create an account</a></p>
+        <p>You need to create an account to order online or make a reservation with us.</p>
+        <p><a href="{% url 'register_user' %}" class="call-to-action">Create an account</a></p>
+        <p>Already have an account?</p>
+        <p>Use your account to make modifications to your reservation.</p>
+        <a href="{% url 'login' %}" class="secondary-button">Sign in</a></p>
       </div>
   </div>
 </div>

@@ -44,6 +44,13 @@
     <div class="center">
         <h2>Reservation</h2>
     </div>
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <strong>Error:</strong>
+        {{ form.errors }}
+    </div>
+    {% endif %}
+
     <form method="post" action="{% url 'booking' %}" required>
         {% csrf_token %}
 

@@ -25,7 +25,7 @@ def menu(request):
     context = {'menu_items': menu_items}
     return render(request, 'menu.html', context)
 
-
+@login_required
 def customize_order(request, item_id):
     print("Received item ID:", item_id)
     menu_order = get_object_or_404(MenuItem, id=item_id)
@@ -58,7 +58,7 @@ def customize_order(request, item_id):
 
     return render(request, 'customize_order.html', context)
 
-
+@login_required
 def checkout(request):
     try:
         user_profile = UserProfile.objects.get(user=request.user)
@@ -109,11 +109,13 @@ def checkout(request):
 
     return render(request, 'checkout.html', context)
 
-
+@login_required
 def payment_successful(request):
     # Handle successful payment
     return render(request, 'payment_successful.html')
 
+
+@login_required
 def payment_cancelled(request):
     # Handle canceled payment
     return render(request, 'payment_cancelled.html')

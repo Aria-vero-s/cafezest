@@ -148,12 +148,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'index' %}"><div class="image-container"></div></a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <!-- Display these links if the user is logged in -->
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'menu' %}">Menu</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'booking' %}">Reserve</a>
                     </li>
+                {% else %}
+                    <!-- Redirect to notRegistered if the user is not logged in -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'notRegistered' %}">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'notRegistered' %}">Reserve</a>
+                    </li>
+                {% endif %}
                 </ul>
             </div>
         </div>
