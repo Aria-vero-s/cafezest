@@ -163,3 +163,21 @@ def remove_item(request, item_id):
     print(f"Removing item: {item}")
     item.delete()
     return redirect('checkout')
+
+@login_required
+def update_quantity(request):
+    if request.method == 'POST':
+        action = request.POST.get('action', '')
+        if action.startswith('update_'):
+            item_id = int(action.split('_')[1])
+            quantity = int(request.POST.get(f'quantity_{item_id}', 1))
+
+            item = get_object_or_404(OrderItem, id=item_id)
+            item.quantity = quantity
+            item.save()
+        elif action.startswith('remove_'):
+            item_id = int(action.split('_')[1])
+            item = get_object_or_404(OrderItem, id=item_id)
+            item.delete()
+
+    return redirect('checkout')

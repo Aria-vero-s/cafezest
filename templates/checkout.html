@@ -2,28 +2,140 @@
 {% load custom_filters %}
 
 {% block content %}
-  <h2>Checkout</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-W2x5U+8oNn5auM3Jz1BIseUJHj1+KBrvypLrCnYbce3/3v2kHo/brtBUmiTO+3PIonFNQKl6b+1tW2nd6psp2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <h3>Your Order</h3>
-  <ul>
-    {% for item in order.order_items.all %}
-    <li>
-      {{ item.menu_order.name }} - ${{ item.menu_order.price }} - Customization: {{ item.customization }} - Quantity: {{ item.quantity }}
-      <form method="post" action="{% url 'remove_item' item_id=item.id %}">
-        {% csrf_token %}
-        <button type="submit">Remove</button>
-      </form>
-    </li>
-  {% endfor %}
-  
-  
-  </ul>
+  <style>
+    .paypal-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      background-color: #0070ba;
+      border-radius: 100px;
+      transition: background-color 0.3s ease-in-out;
+    }
 
-  <h4>Total: ${{ order.order_items.all|total_price }}</h4>
-  <a href="{% url 'menu' %}">Go Back to Menu</a>
+    .paypal-button:hover {
+      background-color: #004471;
+    }
 
-  <form method="post" action="{% url 'checkout' %}">
-    {% csrf_token %}
-    <button type="submit">Place Order</button>
-  </form>
+    .paypal-button i {
+      margin-right: 10px;
+    }
+
+    form {
+      background-color: transparent;
+      margin:0;
+      padding:0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .item-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 50px;
+    }
+
+    .quantity-container {
+      background-color: #ebe0e0;
+      width:120px;
+      border-radius: 100px;
+      display: flex;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    .quantity-input {
+      color:#ff5100;
+      background-color: transparent;
+      width: 50px;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      text-align: center;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    .quantity-btn {
+      cursor: pointer;
+      background-color: transparent;
+      color: #ff5100;
+      border: none;
+      border-radius: 50%;
+      padding: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease-in-out;
+      margin:0;
+    }
+
+    .quantity-btn:hover {
+      background-color: transparent;
+      color: #fff;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
+
+  <div class="container">
+    <div class="center">
+      <h2>Checkout</h2>
+      <h3>Your Order</h3>
+    </div>
+    <form method="post" action="{% url 'update_quantity' %}">
+      {% csrf_token %}
+      <ul>
+        {% for item in order.order_items.all %}
+        <li>
+          <div class="item-container">
+            <h3>{{ item.menu_order.name }}</h3>
+            <p>${{ item.menu_order.price }}</p>
+            <p>{{ item.customization }}</p>
+            <p>Quantity:</p>
+            <div class="quantity-container">
+              <button type="button" class="quantity-btn" onclick="decrementQuantity({{ item.id }})">-</button>
+              <input type="number" name="quantity_{{ item.id }}" class="quantity-input" value="{{ item.quantity }}" min="1" readonly>
+              <button type="button" class="quantity-btn" onclick="incrementQuantity({{ item.id }})">+</button>
+            </div>
+            <div class="button-container">       
+              <button type="submit" name="action" value="update_{{ item.id }}">Update Quantity</button>
+              <button type="submit" name="action" value="remove_{{ item.id }}">Remove</button>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </form>
+    
+
+    <h3>Total: ${{ order.total_price }}</h3>
+    <a href="{% url 'menu' %}">Go Back to Menu</a>
+
+    <form method="post" action="{% url 'checkout' %}">
+      {% csrf_token %}
+      <button class="paypal-button" type="submit"><i class="fab fa-paypal"></i> Place Order</button>
+    </form>
+
+    <script>
+      function incrementQuantity(itemId) {
+        const input = document.querySelector(`input[name="quantity_${itemId}"]`);
+        input.stepUp();
+      }
+
+      function decrementQuantity(itemId) {
+        const input = document.querySelector(`input[name="quantity_${itemId}"]`);
+        input.stepDown();
+      }
+    </script>
+  </div>
 {% endblock %}

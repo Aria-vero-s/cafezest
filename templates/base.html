@@ -141,7 +141,7 @@
                             <a class="nav-link" href="{% url 'index' %}#about">About<span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'catering' %}">Order</a>
+                            <a class="nav-link" href="{% url 'index' %}#footer">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}"><div class="image-container"></div></a>
@@ -162,7 +162,7 @@
     {% block content %}{% endblock %}
     
     <!-- Footer -->
-    <footer class="text-white py-4">
+    <footer class="text-white py-4" id="footer">
       <div class="container footer">
           <div class="row">
               <div class="col-md-4">

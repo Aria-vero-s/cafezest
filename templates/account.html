@@ -5,9 +5,12 @@
 <div class="navbar-background"></div>
 
 <div class="container">
-  {% for booking in bookings %}
-    <h2>Welcome, {{ booking.First_name }}</h2>
-  {% endfor %}
+  <div class="center">
+    {% for booking in bookings %}
+      <h2>Welcome, {{ booking.First_name }}</h2>
+    {% endfor %}
+  </div>
+  <div class="container">
 
   {% for booking in bookings %}
     <a href="/edit/{{ booking.id }}" class="btn">Edit your booking</a>
@@ -27,7 +30,7 @@
     <p>You have no booking yet.</p>
     <a href="{% url 'booking' %}" class="btn">Click here to create a booking</a>
   {% endfor %}
-
+  </div>
 </div>
 
 	

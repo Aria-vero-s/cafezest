@@ -39,7 +39,7 @@
                 <p>{{ item.description }}</p>
                 <p class="price">{{ item.price }}</p>
                 {% if item.id %}
-                    <a href="{% url 'customize_order' item.id %}" class="order-button">Order Now</a>
+                    <a href="{% url 'customize_order' item.id %}" class="order-button"><button>Order Now</button></a>
                 {% endif %}
             </div>
         {% endfor %}
