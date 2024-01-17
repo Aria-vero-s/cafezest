@@ -12,7 +12,3 @@ def test(request):
 def error(request):
     return render(request, 'error.html')
 
-
-def menu(request):
-    return render(request, "menu.html", {})
-

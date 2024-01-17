@@ -24,8 +24,7 @@ urlpatterns = [
     path('', include("home.urls")),
     path('', include("bookings.urls")),
     path('', include("catering.urls")),
-    path('bookings/', include("django.contrib.auth.urls")),
-    path('bookings/', include("bookings.urls")),
-    path('account/', views.account, name='account'),
+    path('', include("menu.urls")),
+    path('paypal/', include('paypal.standard.ipn.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

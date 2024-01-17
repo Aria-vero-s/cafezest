@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Customize Order</h2>
+
+  <form method="post" action="{% url 'customize_order' item_id=menu_order.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add to Order</button>
+  </form>
+
+  <a href="{% url 'checkout' %}">Go to Checkout</a>
+{% endblock %}

@@ -21,46 +21,48 @@
 
     select.form-select, input {
         padding: 10px;
-        border: 1px solid #F7C4CA;
+        border: 1px solid #ff4a0b;
         border-radius: 4px;
         width: 100%;
         font-size: 16px;
-        background-color: #f0f1f3;
+        background-color: #F9F5F1;
     }
 
     select.form-select:focus {
         outline: none;
-        border-color: #FD594D;
+        border-color: #ff4a0b;
     }
 
     /* Additional styles for the form */
-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width:100%;
-}
+    form {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:100%;
+    }
 
-.custom-form select {
-    background-color: transparent;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #FD594D;
-    border-radius: 100px;
-}
+    .custom-form select {
+        background-color: transparent;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ff4a0b;
+        border-radius: 100px;
+    }
 
-/* Thank you message */
-.thank-you-message {
-    display: none;
-    text-align: center;
-    z-index: 10000;
-}
+    /* Thank you message */
+    .thank-you-message {
+        display: none;
+        text-align: center;
+        z-index: 10000;
+    }
 </style>
 
-<div class="page container">
-    <h1 style="margin-top:100px;">Order online</h1>
+<div class="container">
+    <div class="center">
+        <h2>Order online</h2>
+    </div>
     <form method="post" action="{% url 'catering' %}" id="catering-form">
         {% csrf_token %}
         <div class="form-group">

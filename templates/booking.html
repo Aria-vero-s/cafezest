@@ -30,12 +30,14 @@
 
     select.form-select:focus {
         outline: none;
-        border-color: #FD594D;
+        border-color: #ff4a0b;
     }
 </style>
 
-<div class="page container">
-    <h2 style="margin-top:200px;">Reservation</h2>
+<div class="container">
+    <div class="center">
+        <h2>Reservation</h2>
+    </div>
     <form method="post" action="{% url 'booking' %}" required>
         {% csrf_token %}
 

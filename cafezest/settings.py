@@ -29,12 +29,16 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cafezest.herokuapp.com', 'localhost', '127.0.0.1', 'cafezest-ab319720943f.herokuapp.com']
+ALLOWED_HOSTS = ['cafezest.herokuapp.com', 'localhost', '127.0.0.1', 'cafezest-ab319720943f.herokuapp.com', '*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +50,9 @@ INSTALLED_APPS = [
     'home',
     'bookings',
     'catering',
+    'menu',
+    'paypal.standard.ipn',
+    'paypal',
 ]
 
 MIDDLEWARE = [
@@ -67,10 +74,11 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request', #requested by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
@@ -78,6 +86,16 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
 
 WSGI_APPLICATION = 'cafezest.wsgi.application'
 
@@ -177,3 +195,9 @@ STATIC_MEDIA = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PAYPAL_RECEIVER_EMAIL = 'your_email@example.com'
+PAYPAL_TEST = True  # Set to False for production
+PAYPAL_CLIENT_ID = 'your_client_id'
+PAYPAL_SECRET_KEY = 'your_secret_key'

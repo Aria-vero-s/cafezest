@@ -53,6 +53,19 @@ def register_user(request):
 def index(request):
     return render(request, "index.html", {})
 
+
+def about(request):
+    return render(request, "about.html", {})
+
+
+def contact(request):
+    return render(request, "contact.html", {})
+
+
+def menu(request):
+    return render(request, "menu.html", {})
+
+
 def notRegistered(request):
     return render(request, "notRegistered.html", {})
 

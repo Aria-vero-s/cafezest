@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+  <h2>Checkout</h2>
+
+  <h3>Your Order</h3>
+  <ul>
+    {% for item in order.order_items.all %}
+    <li>
+      {{ item.menu_order.name }} - ${{ item.menu_order.price }} - Customization: {{ item.customization }} - Quantity: {{ item.quantity }}
+      <form method="post" action="{% url 'remove_item' item_id=item.id %}">
+        {% csrf_token %}
+        <button type="submit">Remove</button>
+      </form>
+    </li>
+  {% endfor %}
+  
+  
+  </ul>
+
+  <h4>Total: ${{ order.order_items.all|total_price }}</h4>
+  <a href="{% url 'menu' %}">Go Back to Menu</a>
+
+  <form method="post" action="{% url 'checkout' %}">
+    {% csrf_token %}
+    <button type="submit">Place Order</button>
+  </form>
+{% endblock %}
