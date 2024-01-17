@@ -9,13 +9,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from paypal.standard.ipn.signals import valid_ipn_received
 from django.dispatch import receiver
-import paypalrestsdk
 from django.contrib.auth.decorators import login_required
 
+import os
+import paypalrestsdk
 paypalrestsdk.configure({
-    "mode": "sandbox",
-    "client_id": "AWlSvLJeKoDnNgvyeM9PziAkPBw0esbIN--mil-NHOFq03PIn-Iw-74FBiIBmN6v0gHAgs_ARAL45RGv",
-    "client_secret": "EAUbAIPNH5hv-7glW1UytVbZjobSnOODw9q8T-1p6nQupcsbsSRsIjLfPAusQ7YJEiGUPYJnE7umQimj",
+    "mode": os.environ.get("PAYPAL_MODE", "sandbox"),
+    "client_id": os.environ.get("PAYPAL_CLIENT_ID"),
+    "client_secret": os.environ.get("PAYPAL_CLIENT_SECRET"),
 })
 
 
