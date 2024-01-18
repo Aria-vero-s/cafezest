@@ -5,17 +5,27 @@
 <style>
     /* booking */
 
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        margin-bottom: none;
+    }
+
     .booking {
         text-align: center;
         align-items: center;
-        margin: 0;
+        justify-content: center;
+        margin: 0 auto;
         padding: 0;
     }
 
     .booking-heading {
         text-align: center;
         align-items: center;
-        margin: 0;
+        margin-bottom: 40px;
         padding: 0;
     }
 
@@ -34,9 +44,31 @@
         padding-right: 30px;
     }
 
+    form {
+        margin-top:40px;
+    }
+
+    form p {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 0;
+        font-size: 16px;
+        font-weight: 500;
+        text-align: left;
+    }
+
+    form input,
+    form select {
+        margin:0 !important;
+    }
+
     select.form-select:focus {
         outline: none;
         border-color: #ff4a0b;
+    }
+
+    form {
+        margin-bottom: none;
     }
 </style>
 
@@ -44,13 +76,6 @@
     <div class="center">
         <h2>Reservation</h2>
     </div>
-    {% if form.errors %}
-    <div class="alert alert-danger">
-        <strong>Error:</strong>
-        {{ form.errors }}
-    </div>
-    {% endif %}
-
     <form method="post" action="{% url 'booking' %}" required>
         {% csrf_token %}
 
@@ -59,7 +84,7 @@
         </div>
 
         <div class="booking">
-            <p>Specify the total number of guests, including yourself.</p>
+            <p>Specify the total number of guests, including yourself:</p>
             <select class="form-select" name="guests" required>
                 <option value="1 guest">1 guest</option>
                 <option value="2 guests">2 guests</option>

@@ -7,8 +7,9 @@
 
 @font-face {
     font-family: 'PrensentAnthem';
-    src: url('/static/fonts/PresentAnthem-Regular.otf') format('truetype');
+    src: url('/static/fonts/PresentAnthem-Regular.woff') format('woff');
 }
+
 
 /*
 colors:
@@ -329,7 +330,8 @@ form {
 }
 
 footer {
-    background-color: #333;
+    margin-top:100px;
+    background-color: #fff;
 }
 
 .footer {
@@ -338,7 +340,7 @@ footer {
 }
 
 .social-icon {
-    color: #F9F5F1;
+    color: #333;
     text-decoration: none;
     transition: color 0.3s;
     padding-left: 20px;
@@ -356,6 +358,6 @@ footer {
 footer h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    color:#F9F5F1;
+    color:#333;
     text-transform: uppercase;
 }
