@@ -58,11 +58,12 @@ def customize_order(request, item_id):
 
     return render(request, 'customize_order.html', context)
 
+
 @login_required
 def checkout(request):
     try:
         user_profile = UserProfile.objects.get(user=request.user)
-        order = Order.objects.get(userprofile=user_profile)
+        order = Order.objects.get(user=user_profile.user)
     except UserProfile.DoesNotExist:
         user_profile = None
         order = None
