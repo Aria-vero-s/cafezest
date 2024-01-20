@@ -17,6 +17,8 @@
 CafeZest is a website for a fictional coffeeshop. The website utilizes a technology stack including JavaScript, Python (Django), HTML, and CSS. The design theme revolves around bright orange, greens, and blues. To view the design details, please visit the project's
 [Figma wireframe](https://www.figma.com/file/QXKgMa2qWfA1HNlFtdPfiz/Untitled?type=design&node-id=101%3A3&mode=design&t=Wr0bIlSj3lHTfaZa-1).
 
+[Live link](https://cafezest-ab319720943f.herokuapp.com/)
+
 ## Design
 
 - **Full-Screen Hero Image**: Upon landing on the homepage, users are greeted with a captivating full-screen hero image. The image is accompanied by a tagline, header, paragraph, and two call-to-action buttons to engage visitors.
